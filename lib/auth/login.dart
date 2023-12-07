@@ -21,29 +21,29 @@ class LoginState extends State<Login> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-  'Enter Your PIN',
-  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-  textAlign: TextAlign.center,
-),
-SizedBox(height: 20),
+              'Enter Your PIN',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
             Text(
               'Please enter your PIN that you have created',
               style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 8), // Reduce SizedBox height
+            SizedBox(height: 8),
             Image.asset(
               'assets/key.png',
               width: 150,
               height: 120,
             ),
-            SizedBox(height: 8), // Reduce SizedBox height
+            SizedBox(height: 8),
             Container(
               width: 190,
-              height: 50, // Adjust the width of the Container
+              height: 50,
               child: PinTextField(),
             ),
-            SizedBox(height: 30), // Reduce SizedBox height
+            SizedBox(height: 30),
             Container(
               width: 115,
               height: 50,
@@ -52,7 +52,7 @@ SizedBox(height: 20),
                   // Add PIN validation logic here
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Change button color to blue
+                  primary: Colors.blue,
                 ),
                 child: Center(
                   child: Container(
