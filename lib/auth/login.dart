@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum_3/pages/home.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -8,11 +9,13 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
+  TextEditingController _pinController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        title: Text('Login'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(75.0),
@@ -39,9 +42,9 @@ class LoginState extends State<Login> {
             ),
             SizedBox(height: 8),
             Container(
-              width: 190,
+              width: 2300,
               height: 50,
-              child: PinTextField(),
+              child: PinTextField(controller: _pinController),
             ),
             SizedBox(height: 30),
             Container(
@@ -49,7 +52,23 @@ class LoginState extends State<Login> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // Add PIN validation logic here
+                  // Validasi PIN
+                  String enteredPin = _pinController.text;
+                  if (enteredPin == 'Daskom8') {
+                    // Jika PIN sesuai, pindah ke halaman beranda (contoh: HomeScreen)
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  } else {
+                    // Jika PIN tidak sesuai, tampilkan pesan kesalahan
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('PIN salah. Coba lagi.'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
@@ -75,20 +94,22 @@ class LoginState extends State<Login> {
 }
 
 class PinTextField extends StatefulWidget {
+  final TextEditingController controller;
+
+  PinTextField({required this.controller});
+
   @override
   _PinTextFieldState createState() => _PinTextFieldState();
 }
 
 class _PinTextFieldState extends State<PinTextField> {
-  TextEditingController _pinController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: _pinController,
-      keyboardType: TextInputType.number,
+      controller: widget.controller,
+      keyboardType: TextInputType.text, // Mengubah tipe keyboard
       obscureText: true,
-      maxLength: 2,
+      maxLength: 10,
       textAlign: TextAlign.center,
       style: TextStyle(fontSize: 18),
       decoration: InputDecoration(
@@ -99,11 +120,5 @@ class _PinTextFieldState extends State<PinTextField> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _pinController.dispose();
-    super.dispose();
   }
 }

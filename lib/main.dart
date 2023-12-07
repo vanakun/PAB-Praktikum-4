@@ -1,6 +1,7 @@
 //Dava Nabila Muzaky 1462100153
 
 import 'package:flutter/material.dart';
+import 'package:praktikum_3/pages/home.dart';
 // ignore: depend_on_referenced_packages
 import 'auth/login.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Login(),
+        '/home': (context) => HomeScreen(),
       },
     );
   }
