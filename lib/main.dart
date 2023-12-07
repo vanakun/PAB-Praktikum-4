@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
-import 'package:praktikum_3/auth/register.dart';
+import 'auth/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => Register(),
+        '/': (context) => Login(),
       },
     );
   }
